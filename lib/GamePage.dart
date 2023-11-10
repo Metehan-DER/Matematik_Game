@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:matematik/Emoji.dart';
 import 'dart:async';
 import 'dart:math';
 import 'HomePage.dart';
@@ -47,7 +48,6 @@ class _GamePageState extends State<GamePage> {
     startTimer();
   }
 
-
   void startTimer() {
     timer = Timer.periodic(Duration(seconds: 1), (Timer t) {
       setState(() {
@@ -60,6 +60,39 @@ class _GamePageState extends State<GamePage> {
     });
   }
 
+  void showFeedbackWithEmoji(String emoji) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: Colors.transparent,
+          content: EmojiAnimation(emoji: emoji),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                "Pes etme, tekrar dene".toUpperCase(),
+                style: TextStyle(color: AppColors.textColor,
+                fontSize: 20,),
+              ),
+              style: ElevatedButton.styleFrom(
+                  primary: AppColors.primaryColor),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+// Example usage:
+// showFeedbackWithEmoji('😢'); // Sad emoji
+// showFeedbackWithEmoji('😊'); // Happy emoji
+// showFeedbackWithEmoji('🎉'); // Celebration emoji
+// ...
+
+
   void handleTimeUp() {
     timer.cancel();
     setState(() {
@@ -70,13 +103,15 @@ class _GamePageState extends State<GamePage> {
         startTimer();
       } else {
         gameOver = true;
-        confettiController.play();
         if (score < 50) {
           audioPlayer.play(AssetSource(lowScoreSound));
+          showFeedbackWithEmoji('😢');
         } else if (score < 80) {
           audioPlayer.play(AssetSource(mediumScoreSound));
+          confettiController.play();
         } else {
           audioPlayer.play(AssetSource(highScoreSound));
+          confettiController.play();
         }
       }
     });
@@ -229,11 +264,13 @@ class _GamePageState extends State<GamePage> {
                     SizedBox(height: size.height * 0.01),
                     Text('Soru ${questionCount + 1}/10',
                         style: TextStyle(
-                            fontSize: size.width * 0.07, color: AppColors.textColor)),
+                            fontSize: size.width * 0.07,
+                            color: AppColors.textColor)),
                     SizedBox(height: size.height * 0.08),
                     Text('$firstNumber ${widget.operation} $secondNumber = ?',
                         style: TextStyle(
-                            fontSize: size.width * 0.10, color: AppColors.textColor)),
+                            fontSize: size.width * 0.10,
+                            color: AppColors.textColor)),
                     SizedBox(height: size.height * 0.04),
                     GridView.count(
                       crossAxisCount: 2,

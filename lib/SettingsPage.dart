@@ -102,7 +102,7 @@ class _settingsPageState extends State<settingsPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    // Tema seçeneklerini tanımlayın
+    // Tema seçenekleri
     List<Map<String, dynamic>> themeOptions = [
       {
         'index': 1,
