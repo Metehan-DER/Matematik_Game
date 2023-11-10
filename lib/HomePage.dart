@@ -16,26 +16,12 @@ class homePage extends StatelessWidget {
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
         backgroundColor: AppColors.backgroundColor,
-        elevation: 10,
         leading: Image.asset('assets/logo.png'), // Burada yeni logoyu ekliyoruz
+        centerTitle: true,
         title: Text(
           "MATEMATİK",
           style: TextStyle(color: AppColors.textColor),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => settingsPage()), // SecondPage burada yönlendirilecek sayfanın adı olmalı
-              );
-            },
-            icon: Icon(
-              Icons.settings,
-              color: AppColors.textColor,
-            ),
-          )
-        ],
       ),
       body: Center(
         child: Row(
@@ -93,7 +79,12 @@ class homePage extends StatelessWidget {
                 ), // New Game Butonu
                 SizedBox(height: 20),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => settingsPage()), // SecondPage burada yönlendirilecek sayfanın adı olmalı
+                    );
+                  },
                   child: Container(
                     width: size.width * 0.4,
                     height: size.height * 0.2,
@@ -114,7 +105,7 @@ class homePage extends StatelessWidget {
                             padding: const EdgeInsets.all(
                                 8.0), // İkonun içindeki boşluk
                             child: Icon(
-                              CupertinoIcons.shuffle,
+                              CupertinoIcons.settings,
                               color: AppColors.textColor,
                               size: size.width * 0.15,
                             ),
@@ -122,7 +113,7 @@ class homePage extends StatelessWidget {
                         ),
                         SizedBox(height: 20),
                         Text(
-                          "Random Game",
+                          "Settings",
                           style: TextStyle(
                             fontSize: size.width * 0.05,
                             color: AppColors.textColor,

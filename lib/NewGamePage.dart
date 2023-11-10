@@ -147,7 +147,7 @@ class _newGamePageState extends State<newGamePage> {
                                       MaterialPageRoute(
                                           builder: (context) => GamePage(
                                               operation: "+",
-                                              level: "Basit",
+                                              level: "Kolay",
                                               x1: 100,
                                               x2: 100)), // SecondPage burada yönlendirilecek sayfanın adı olmalı
                                     );
@@ -266,7 +266,7 @@ class _newGamePageState extends State<newGamePage> {
                                       MaterialPageRoute(
                                           builder: (context) => GamePage(
                                               operation: "*",
-                                              level: "Basit",
+                                              level: "Kolay",
                                               x1: 10,
                                               x2: 10)), // SecondPage burada yönlendirilecek sayfanın adı olmalı
                                     );
@@ -391,7 +391,7 @@ class _newGamePageState extends State<newGamePage> {
                                       MaterialPageRoute(
                                           builder: (context) => GamePage(
                                               operation: "-",
-                                              level: "Basit",
+                                              level: "Kolay",
                                               x1: 100,
                                               x2: 99)), // SecondPage burada yönlendirilecek sayfanın adı olmalı
                                     );
@@ -488,7 +488,7 @@ class _newGamePageState extends State<newGamePage> {
                                   "BÖLME",
                                   style: TextStyle(
                                     fontSize: size.width * 0.05,
-                                    color: AppColors.backgroundColor,
+                                    color: AppColors.textColor,
                                   ),
                                 ),
                               ],
@@ -511,7 +511,7 @@ class _newGamePageState extends State<newGamePage> {
                                       MaterialPageRoute(
                                           builder: (context) => GamePage(
                                               operation: "/",
-                                              level: "Basit",
+                                              level: "Kolay",
                                               x1: 100,
                                               x2: 10)), // SecondPage burada yönlendirilecek sayfanın adı olmalı
                                     );
@@ -555,7 +555,7 @@ class _newGamePageState extends State<newGamePage> {
                                       MaterialPageRoute(
                                           builder: (context) => GamePage(
                                               operation: "/",
-                                              level: "Basit",
+                                              level: "Kolay",
                                               x1: 10000,
                                               x2: 1000)), // SecondPage burada yönlendirilecek sayfanın adı olmalı
                                     );

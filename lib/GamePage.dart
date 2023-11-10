@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'dart:async';
 import 'dart:math';
 import 'HomePage.dart';
 import 'Renkler&Temalar.dart';
@@ -35,12 +36,63 @@ class _GamePageState extends State<GamePage> {
   String lowScoreSound = 'low.wav';
   String mediumScoreSound = 'medium.mp3';
   String highScoreSound = 'succses.wav';
-
+  late int totalTime;
+  late Timer timer;
 
   @override
   void initState() {
     super.initState();
+    totalTime = getTimeForLevel(widget.level);
     generateQuestion(widget.x1, widget.x2);
+    startTimer();
+  }
+
+
+  void startTimer() {
+    timer = Timer.periodic(Duration(seconds: 1), (Timer t) {
+      setState(() {
+        if (totalTime > 0) {
+          totalTime--;
+        } else {
+          handleTimeUp();
+        }
+      });
+    });
+  }
+
+  void handleTimeUp() {
+    timer.cancel();
+    setState(() {
+      questionCount++;
+      if (questionCount < 10) {
+        generateQuestion(widget.x1, widget.x2);
+        totalTime = getTimeForLevel(widget.level);
+        startTimer();
+      } else {
+        gameOver = true;
+        confettiController.play();
+        if (score < 50) {
+          audioPlayer.play(AssetSource(lowScoreSound));
+        } else if (score < 80) {
+          audioPlayer.play(AssetSource(mediumScoreSound));
+        } else {
+          audioPlayer.play(AssetSource(highScoreSound));
+        }
+      }
+    });
+  }
+
+  int getTimeForLevel(String level) {
+    switch (level) {
+      case 'Kolay':
+        return 15;
+      case 'Orta':
+        return 10;
+      case 'Zor':
+        return 5;
+      default:
+        return 10;
+    }
   }
 
   void generateQuestion(int x1, int x2) {
@@ -88,44 +140,46 @@ class _GamePageState extends State<GamePage> {
     if (selectedAnswer == correctAnswer) {
       setState(() {
         score += 10;
-        questionCount++;
-
-        if (questionCount < 10) {
-          generateQuestion(widget.x1, widget.x2);
-        } else {
-          gameOver = true;
-          // Oyun bittiğinde konfeti patlaması ve müzik çalması
-          confettiController.play();
-          // Skorunuza göre uygun sesi çal
-          if (score < 50) {
-            audioPlayer.play(AssetSource(lowScoreSound));
-          } else if (score < 80) {
-            audioPlayer.play(AssetSource(mediumScoreSound));
-          } else {
-            audioPlayer.play(AssetSource(highScoreSound));
-          }
-        }
+        handleTimeUp();
       });
     } else {
       setState(() {
-        questionCount++;
-
-        if (questionCount < 10) {
-          generateQuestion(widget.x1, widget.x2);
-        } else {
-          gameOver = true;
-          // Oyun bittiğinde konfeti patlaması ve müzik çalması
-          confettiController.play();
-        }
+        handleTimeUp();
       });
     }
   }
 
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final Random random = Random();
     final size = MediaQuery.of(context).size;
+    double progress = totalTime / getTimeForLevel(widget.level);
+    Color startColor = AppColors.primaryColor;
+    Color endColor = AppColors.secondaryColor;
+
+    // Adjust gradient colors based on progress
+    if (progress < 0.5) {
+      startColor = Color.lerp(
+        Colors.red,
+        AppColors.secondaryColor,
+        progress * 2,
+      )!;
+      endColor = AppColors.secondaryColor;
+    } else {
+      startColor = AppColors.primaryColor;
+      endColor = Color.lerp(
+        AppColors.textColor,
+        AppColors.secondaryColor,
+        (progress - 0.5) * 2,
+      )!;
+    }
+
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
@@ -145,22 +199,42 @@ class _GamePageState extends State<GamePage> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    LinearProgressIndicator(
-                      value: (questionCount + 1) / 10,
-                      minHeight: 24,
-                      color: AppColors.primaryColor,
-                      backgroundColor: AppColors.secondaryColor,
-                      borderRadius: BorderRadius.circular(24),
+                    Stack(
+                      alignment: Alignment.bottomCenter,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [startColor, endColor],
+                            ),
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                          height: 32,
+                          width: size.width,
+                        ),
+                        Positioned(
+                          bottom: 0,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            'Kalan Süre: $totalTime s',
+                            style: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              fontSize: 18,
+                              color: AppColors.backgroundColor,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: size.height * 0.05),
+                    SizedBox(height: size.height * 0.01),
                     Text('Soru ${questionCount + 1}/10',
                         style: TextStyle(
-                            fontSize: 40, color: AppColors.textColor)),
+                            fontSize: size.width * 0.07, color: AppColors.textColor)),
                     SizedBox(height: size.height * 0.08),
                     Text('$firstNumber ${widget.operation} $secondNumber = ?',
                         style: TextStyle(
-                            fontSize: 40, color: AppColors.textColor)),
-                    SizedBox(height: size.height * 0.05),
+                            fontSize: size.width * 0.10, color: AppColors.textColor)),
+                    SizedBox(height: size.height * 0.04),
                     GridView.count(
                       crossAxisCount: 2,
                       shrinkWrap: true,
@@ -199,7 +273,6 @@ class _GamePageState extends State<GamePage> {
                     SizedBox(
                       height: size.height * 0.08,
                     ),
-                    // Konfeti patlaması
                     Align(
                       alignment: Alignment.centerRight,
                       child: ConfettiWidget(
@@ -209,7 +282,9 @@ class _GamePageState extends State<GamePage> {
                         numberOfParticles: 20,
                       ),
                     ),
-                    SizedBox(height: 40,),
+                    SizedBox(
+                      height: 40,
+                    ),
                     Text('Oyun Bitti!',
                         style: TextStyle(
                             fontSize: 40, color: AppColors.textColor)),
@@ -219,7 +294,6 @@ class _GamePageState extends State<GamePage> {
                     SizedBox(
                       height: size.height * 0.2,
                     ),
-
                     TextButton(
                       onPressed: () {
                         audioPlayer.stop();
@@ -227,7 +301,6 @@ class _GamePageState extends State<GamePage> {
                           context,
                           MaterialPageRoute(builder: (context) => homePage()),
                         );
-
                       },
                       style: ElevatedButton.styleFrom(
                         primary: AppColors.primaryColor,
