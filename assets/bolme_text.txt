@@ -1,0 +1,43 @@
+<h1>Bölme işlemi</h1>
+
+Bölme işlemi, matematikte bir sayının başka bir sayıya bölünmesi işlemidir. Bu işlem, sayılar arasındaki bölme işareti (/) kullanılarak ifade edilir. İşte bölme işlemini tane tane anlatan birkaç örnek:
+
+<h1>Örnek 1: İki Sayının Bölünmesi</h1>
+
+Örnek: 12'yi 3'e bölün.
+
+Adım 1: İlk sayıyı seçin. İlk sayı 12'dir.
+
+Adım 2: İkinci sayıyı seçin. İkinci sayı 3'tür.
+
+Adım 3: İlk sayıyı ikinci sayıya bölebilirsiniz: 12 / 3 = 4.
+
+Sonuç: 12, 3'e bölündüğünde sonuç 4'tür.
+
+<h1>Örnek 2: Üç Sayının Bölünmesi</h1>
+
+Örnek: 36'yı 6'ya ve 2'ye bölün.
+
+Adım 1: İlk sayıyı seçin. İlk sayı 36'dır.
+
+Adım 2: İkinci sayıyı seçin. İkinci sayı 6'dır.
+
+Adım 3: Üçüncü sayıyı seçin. Üçüncü sayı 2'dir.
+
+Adım 4: İlk sayıyı sırayla ikinci ve üçüncü sayılara bölün: 36 / 6 = 6, sonra 6 / 2 = 3.
+
+Sonuç: 36, önce 6'ya sonra 2'ye bölündüğünde sonuç 3'tür.
+
+<h1>Örnek 3: Ondalık Bölme</h1>
+
+Örnek: 5'i 2'ye bölün ve sonucu ondalık olarak hesaplayın.
+
+Adım 1: İlk sayıyı seçin. İlk sayı 5'tir.
+
+Adım 2: İkinci sayıyı seçin. İkinci sayı 2'dir.
+
+Adım 3: İlk sayıyı ikinci sayıya bölebilirsiniz: 5 / 2 = 2.5.
+
+Sonuç: 5, 2'ye bölündüğünde sonuç 2.5'tir. Bu ondalık bir sonuçtur.
+
+Bölme işlemi, bir sayının başka bir sayıya bölünmesini ifade eder. Sonuç, bölünen sayının bölme işlemi sonucu olarak ortaya çıkar. Özellikle ondalık bölme durumlarında, sonuç ondalık bir sayı olabilir.

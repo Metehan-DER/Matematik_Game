@@ -1,0 +1,47 @@
+<h1>Toplama işlemi</h1>
+
+Toplama işlemi, matematikte iki veya daha fazla sayının toplanarak bir sonuç bulma işlemidir. Bu işlem, sayılar arasındaki toplama işareti (+) kullanılarak ifade edilir. İşte toplama işlemini ayrıntılı bir şekilde anlatan birkaç örnek:
+
+<h1>Örnek 1: İki Sayının Toplanması</h1>
+
+Örnek: 5 ile 7 sayılarını toplayın.
+
+Adım 1: İlk sayıyı seçin. İlk sayı 5'tir.
+
+Adım 2: İkinci sayıyı seçin. İkinci sayı 7'dir.
+
+Adım 3: Bu iki sayıyı toplayın: 5 + 7 = 12.
+
+Sonuç: 5 ile 7 sayılarının toplamı 12'dir.
+
+<h1>Örnek 2: Üç Sayının Toplanması</h1>
+
+Örnek: 3, 4 ve 6 sayılarını toplayın.
+
+Adım 1: İlk sayıyı seçin. İlk sayı 3'tür.
+
+Adım 2: İkinci sayıyı seçin. İkinci sayı 4'tür.
+
+Adım 3: Üçüncü sayıyı seçin. Üçüncü sayı 6'dır.
+
+Adım 4: Bu üç sayıyı sırayla toplayın: 3 + 4 = 7, sonra 7 + 6 = 13.
+
+Sonuç: 3, 4 ve 6 sayılarının toplamı 13'tür.
+
+<h1>Örnek 3: Çok Basamaklı Sayıların Toplanması</h1>
+
+Örnek: 325 ve 478 sayılarını toplayın.
+
+Adım 1: İlk sayıyı seçin. İlk sayı 325'tir.
+
+Adım 2: İkinci sayıyı seçin. İkinci sayı 478'dir.
+
+Adım 3: Sayıları sırayla toplayın, ancak aynı basamaklardaki sayıları bir araya getirin. Başlayın sağdan sola doğru:
+
+5 + 8 = 13 (Üç haneli bir sayı olduğu için 3 yazıp 1'i aklınızda tutun.)
+2 + 7 + 1 (akılda tutulan) = 10 (İki haneli bir sayı olduğu için 0 yazıp 1'i aklınızda tutun.)
+1 + 4 + 1 (akılda tutulan) = 6 (Tek haneli bir sayıdır.)
+Sonuç: 325 ve 478 sayılarının toplamı 803'tür.
+
+Toplama işlemi, sayıları basamaklarına göre sırayla işleyerek yapılır. İlk olarak birler basamağından başlanır, ardından onlar basamağına geçilir ve gerektiğinde bir üst basamaktan gelen taşma işlemi dikkate alınır. Bu şekilde sayıları toplayarak sonucu bulabilirsiniz.
+

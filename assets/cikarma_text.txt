@@ -1,0 +1,45 @@
+<h1>Çıkarma işlemi</h1>
+
+Çıkarma işlemi, matematikte iki sayı arasındaki farkı bulma işlemidir. Bu işlem, sayılar arasındaki çıkarma işareti (-) kullanılarak ifade edilir. İşte çıkarma işlemini tane tane anlatan birkaç örnek:
+
+<h1>Örnek 1: İki Sayının Çıkarılması</h1>
+
+Örnek: 9'dan 4 çıkarın.
+
+Adım 1: İlk sayıyı seçin. İlk sayı 9'dur.
+
+Adım 2: İkinci sayıyı seçin. İkinci sayı 4'tür.
+
+Adım 3: İlk sayıdan ikinci sayıyı çıkarın: 9 - 4 = 5.
+
+Sonuç: 9'dan 4 çıkarıldığında sonuç 5'tir.
+
+<h1>Örnek 2: Üç Sayının Çıkarılması</h1>
+
+Örnek: 12'den 5 ve 3'ü çıkarın.
+
+Adım 1: İlk sayıyı seçin. İlk sayı 12'dir.
+
+Adım 2: İkinci sayıyı seçin. İkinci sayı 5'tir.
+
+Adım 3: Üçüncü sayıyı seçin. Üçüncü sayı 3'tür.
+
+Adım 4: İlk sayıdan sırayla ikinci ve üçüncü sayıları çıkarın: 12 - 5 = 7, sonra 7 - 3 = 4.
+
+Sonuç: 12'den 5 ve 3 çıkarıldığında sonuç 4'tür.
+
+<h1>Örnek 3: Ödünç Alma İşlemi (Bir üst basamaktan)</h1>
+
+Örnek: 34'ten 18 çıkarın.
+
+Adım 1: İlk sayıyı seçin. İlk sayı 34'tür.
+
+Adım 2: İkinci sayıyı seçin. İkinci sayı 18'dir.
+
+Adım 3: İlk sayıdan ikinci sayıyı çıkardığınızda 4 - 8 yapmanız gerekiyor. Ancak 4, 8'i çıkaramaz, bu nedenle bir üst basamaktan ödünç almanız gerekecek.
+
+Adım 4: Önce 3'ten 1'i çıkarın (3 - 1 = 2). Sonra bu sonucu kullanarak 14 - 8 işlemini yapın (14 - 8 = 6).
+
+Sonuç: 34'ten 18 çıkarıldığında sonuç 16'dır.
+
+Çıkarma işlemi, sayıların basamaklarına göre sırayla işleyerek yapılır. Eğer bir basamakta çıkarma yapılamıyorsa, bir üst basamaktan ödünç alınır ve işlem devam eder. Bu şekilde sayıları çıkararak sonucu bulabilirsiniz.
